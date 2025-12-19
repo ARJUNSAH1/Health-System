@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus | Hospital Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7dd3fc;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(37, 99, 235, 0.1), rgba(125, 211, 252, 0.1)), 
+                        url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Appointment Section */
+        .section {
+            padding: 4rem 5%;
+        }
+
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Doctors Grid */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .doc-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        /* Facility Section */
+        .facility-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .facility-item {
+            background: #e0e7ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        /* Dashboard Preview Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .appointment-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">✚ CarePlus</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#doctors">Doctors</a></li>
+            <li><a href="#facilities">Facilities</a></li>
+            <li><a href="#appointment">Book Appointment</a></li>
+            <li><a href="#dashboard">Admin</a></li>
+        </ul>
+        <button class="btn" style="padding: 0.5rem 1.2rem;">Login</button>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Expert Care, <br>Close to Home.</h1>
+            <p>Access world-class healthcare services. Book appointments with top specialists in minutes.</p><br>
+            <button class="btn" onclick="document.getElementById('appointment').scrollIntoView()">Start Booking</button>
+        </div>
+    </section>
+
+    <section class="section" id="doctors">
+        <h2 style="text-align: center;">Our Specialists</h2>
+        <div class="doc-grid">
+            <div class="doc-card">
+                <h3>Dr. Arjun Shah</h3>
+                <p style="color: var(--primary); font-weight: 600;">Cardiology Specialist</p>
+                <p>15+ Years Experience</p>
+            </div>
+            <div class="doc-card">
+                <h3>Dr. Abhilash Arya</h3>
+                <p style="color: var(--primary); font-weight: 600;">Neurology Specialist</p>
+                <p>12+ Years Experience</p>
+            </div>
+            <div class="doc-card">
+                <h3>Dr. Aniket Kumar</h3>
+                <p style="color: var(--primary); font-weight: 600;">Orthopedic Specialist</p>
+                <p>10+ Years Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="facilities" style="background-color: #f8fafc;">
+        <h2 style="text-align: center;">Hospital Facilities</h2>
+        <div class="facility-list">
+            <div class="facility-item">24/7 Emergency</div>
+            <div class="facility-item">Advanced ICU</div>
+            <div class="facility-item">Digital X-Ray</div>
+            <div class="facility-item">Pharmacy</div>
+            <div class="facility-item">Blood Bank</div>
+            <div class="facility-item">Operation Theatre</div>
+        </div>
+    </section>
+
+    <section class="section" id="appointment">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Schedule a Consultation</h2>
+        <div class="appointment-container">
+            <div>
+                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" alt="Doctor" style="width: 100%; border-radius: 10px;">
+            </div>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter patient name" required>
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select id="dept">
+                        <option value="cardio">Cardiology (Dr. Arjun Shah)</option>
+                        <option value="neuro">Neurology (Dr. Abhilash Arya)</option>
+                        <option value="ortho">Orthopedics (Dr. Aniket Kumar)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Book Now</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section" id="dashboard" style="background: #f1f5f9;">
+        <h2 style="text-align: center;">Hospital Overview (Admin Dashboard)</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Total Patients</p>
+                <h3>1,240</h3>
+            </div>
+            <div class="stat-card">
+                <p>Available Doctors</p>
+                <h3>42</h3>
+            </div>
+            <div class="stat-card">
+                <p>Surgery Rooms</p>
+                <h3>08</h3>
+            </div>
+            <div class="stat-card">
+                <p>Emergency Alerts</p>
+                <h3 style="color: var(--danger);">02</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 CarePlus Hospital Management System. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const dept = document.getElementById('dept').options[document.getElementById('dept').selectedIndex].text;
+            
+            if(name && date) {
+                alert(`Success! Appointment requested for ${name} with ${dept} on ${date}. Our team will call you shortly.`);
+                this.reset();
+            } else {
+                alert("Please fill in all details.");
+            }
+        });
+    </script>
+</body>
+</html>
